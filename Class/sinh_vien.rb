@@ -1,5 +1,4 @@
 class SinhVien
-  attr_accessor :name, :id, :mLy, :mHoa, :mToan
 
   def initialize(name, id)
     @name = name
@@ -35,7 +34,7 @@ class SinhVien
   end
 
   def get_dtb
-    (@mToan + mLy + mHoa) / 3.0
+    (@mToan + @mLy + @mHoa) / 3.0
   end
 
   def display
