@@ -54,4 +54,5 @@ i = 1
 stds.each do |s|
   puts "#{i}: #{s.name}"
   puts s.grade.round(2)
+  i+=1
 end
