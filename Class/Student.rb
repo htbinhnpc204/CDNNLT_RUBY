@@ -44,12 +44,22 @@ student2 = Student.new("Hồ Thái Bình 2", "Male", 168, 65, "0946794778","htbi
 student3 = Student.new("Hồ Thái Bình 3", "Male", 168, 65, "0946794778","htbinhnpc@gmail.com", "black", "1911505310105", "19T1", "UTE UDN", 6.22222)
 student4 = Student.new("Hồ Thái Bình 4", "Male", 168, 65, "0946794778","htbinhnpc@gmail.com", "black", "1911505310105", "19T1", "UTE UDN", 10.0)
 
+i = 1
+puts "\t\tNomal:"
+stds.each do |s|
+  puts "#{i}: #{s.name}"
+  puts s.grade.round(2)
+  i+=1
+end
+
+
 stds = [student, student2, student3, student4]
 
 stds = stds.sort_by!{|a| a.grade}
 
 stds = stds.reverse
 
+puts "\t\tSorted:"
 i = 1
 stds.each do |s|
   puts "#{i}: #{s.name}"
