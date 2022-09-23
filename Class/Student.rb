@@ -50,7 +50,8 @@ stds = stds.sort_by!{|a| a.grade}
 
 stds = stds.reverse
 
+i = 1
 stds.each do |s|
-  puts "\n====INFO: #{s.name}===="
-  s.show
+  puts "#{i}: #{s.name}"
+  puts s.grade.round(2)
 end
