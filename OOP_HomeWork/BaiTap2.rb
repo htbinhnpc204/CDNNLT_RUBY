@@ -96,7 +96,8 @@ class DocumentManager
   end
 
   def deleteBook(id)
-    documentList.delete_if { |doc| doc._id.eql? id }
+    result = documentList.delete_if { |doc| doc._id.eql? id }
+    puts result
   end
 
   def getBookByType(type)
@@ -106,8 +107,13 @@ class DocumentManager
 
   def displayDocument(id)
     doc = documentList.first { |doc| doc._id == id }
-    puts "Thông tin sách #{id}:"
-    puts doc.to_s
+    if doc != nil
+      puts "Thông tin tài liệu #{id}:"
+      puts doc.to_s
+    else
+      puts "Không tìm thấy tài liệu có mã #{id}"
+    end
+
   end
 end
 
@@ -120,22 +126,21 @@ while true
   puts("3. Xem tài liệu bằng mã")
   puts("4. Tìm kiếm theo mã tài liệu")
   puts("5. Thoát chương trình")
-  prints "Nhập vào lựa chọn: "
+  print "Nhập vào lựa chọn: "
   choosen = gets.chomp
   case choosen
   when '1'
     documentManager.addNewDocument()
   when '2'
-    prints "Nhập vào id tài liệu muốn xóa: "
+    print "Nhập vào id tài liệu muốn xóa: "
     id = gets.chomp
     documentManager.deleteBook(id)
-    puts "Xóa thành công sách #{id}"
   when '3'
-    prints "Nhập vào id tài liệu muốn hiển thị: "
+    print "Nhập vào id tài liệu muốn hiển thị: "
     id = gets.chomp
     documentManager.displayDocument(id)
   when '4'
-    prints "Nhập vào loại tài liệu muốn lọc\n(1-Book 2-Magazine 3-News): "
+    print "Nhập vào loại tài liệu muốn lọc\n(1-Book 2-Magazine 3-News): "
     type = gets.chomp
     arr = documentManager.getBookByType(type)
     puts "Danh sách #{(type == '1' ? "Sách" : type == '2' ? "Tạp chí" : "Báo")}"
@@ -143,5 +148,8 @@ while true
   when '5'
     break
   end
-  puts 'Thanks for using'
+  puts "Nhấn phím bất kỳ để tiếp tục"
+  gets
 end
+puts 'Thanks for using'
+
